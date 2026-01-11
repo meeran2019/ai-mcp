@@ -1,1 +1,53 @@
+-------------------------------------------------------------------------------------------------------------------------------
+MCP (Model Context Protocol):
+-------------------------------------------------------------------------------------------------------------------------------
 
+  It is interface between the AI system and External Systems.
+  It consists of MCP Client and MCP Server.
+  Client is created/supported by Host (Interface to interact with LLM).
+  Server is created/supported by external system.
+  With MCP client, it can connect to multiple MCP servers.
+
+-------------------------------------------------------------------------------------------------------------------------------
+ARCHITECTURE:
+-------------------------------------------------------------------------------------------------------------------------------
+
+User -> Host <-> MCP Client ->(mcp protocol) MCP Server <->(web api/local functions) API/Tools
+MCP client runs mostlt on local machine.
+MCP server runs on local machine or the server.
+
+-------------------------------------------------------------------------------------------------------------------------------
+MCP SERVER:
+-------------------------------------------------------------------------------------------------------------------------------
+
+MCP Client -> MCP Server -> Tools (A/B/C) -> Tools or Function contains the Name, Description, Input Schema in dictionary format.
+It consists of Tools or Functions, Resources and Prompts. 
+Resource is reading/get some user data.
+Promps is template prompts which gives the best results.
+
+In python MCP, it supports
+  1. lowlevel or server -> This is original and complex.
+  2. fastMCP -> This is abstract and simplify it.
+
+FastMCP is highly adoped and open source community support and use it highly.
+
+-------------------------------------------------------------------------------------------------------------------------------
+MCP PROTOCOL:
+-------------------------------------------------------------------------------------------------------------------------------
+
+It supports local and server dependsup on the MCP server location.
+
+If MCP server locates in local machine with same MCP Client -> Uses Stdio (Standard Input Output).
+It MCP server locates remotely -> Uses HTTP protocal and SSE (Deprecated)
+
+Local -> User pass the MCP Client with MCP server details which downloads and install it locally.
+Remote -> User pass the remote location where the MCP server reside which download through HTTP Protocal.
+
+
+
+
+
+
+
+      
+    
